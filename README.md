@@ -10,8 +10,9 @@ As a pre-requisite, you should have Android Studio and a working emulator or dev
 
 1. Clone this repository
 1. Open Android Studio 
-1. Open the project located in `starter\LearnApp`
-1. Build and run
+1. From the welcome Quick Start, select Open an existing Android Studio project
+1. Navigate to the project located in `starter/LearnApp` and open it
+1. Click Run
 
 You should see the app running in your emulator/device.
 
