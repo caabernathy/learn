@@ -39,7 +39,7 @@ public class ModelUtils {
         Topic addition = createTopic("Addition", math);
         Topic subtraction = createTopic("Subtraction", math);
 
-        Topic prehistoric = createTopic("Pre-historic", history);
+        Topic ancient = createTopic("Ancient History", history);
         Topic modern = createTopic("Modern History", history);
 
         createQuestion(
@@ -88,19 +88,69 @@ public class ModelUtils {
 
         createQuestion(
                 "What great event occurred in the year 776 B.C. in Europe?",
-                prehistoric,
+                ancient,
                 new ArrayList<String>(Arrays.asList(
                         "Spanish Civil War",
                         "Second World War",
                         "Assassination of Julius Caesar",
                         "Olympic Games")),
-                2);
+                3);
+
+        createQuestion(
+                "What is the name for the writing system of the ancient Egyptians?",
+                ancient,
+                new ArrayList<String>(Arrays.asList(
+                        "Hieroglyphics",
+                        "Cuneiform",
+                        "Kojiki",
+                        "Sanskrit")),
+                0);
+
+        createQuestion(
+                "The first King of Israel was Saul around 10,000 BC. Who were the next two?",
+                ancient,
+                new ArrayList<String>(Arrays.asList(
+                        "David then Caesar",
+                        "Solomon then Abraham",
+                        "Herod then Ahab",
+                        "David then Solomon")),
+                3);
+
+        createQuestion(
+                "What is the name of this kingdom that was later called Sultanate Sokoto?",
+                ancient,
+                new ArrayList<String>(Arrays.asList(
+                        "Yorubaland",
+                        "Fulah (Fulani)",
+                        "Asante (Ashanti)",
+                        "Oyo")),
+                1);
 
         createQuestion(
                 "Which country declared war on Britain and France on June 10, 1940?",
                 modern,
                 new ArrayList<String>(Arrays.asList("Germany", "Russia", "Italy", "Morocco")),
                 2);
+
+        createQuestion(
+                "Which Egyptian king did Gamel Abdel Nasser overthrow in a military coup in 1952?",
+                modern,
+                new ArrayList<String>(Arrays.asList(
+                        "King Hassan", "King Mswati", "King Abdelaziz", "King Farouk")),
+                3);
+
+        createQuestion(
+                "Who was the first African woman to win a Nobel prize?",
+                modern,
+                new ArrayList<String>(Arrays.asList(
+                        "Fatmata Conteth",
+                        "Wangari Maathai",
+                        "Anna Tiabaijuka",
+                        "Eileen Johnson Sirleaf")),
+                1);
+
+        // This language developed along the East Coast of Africa from interaction between Arabs and the local (Mijikenda) tribes. What language is this?
+        // Afrikaans is the language of the Boers (people of Dutch ancestry) of South Africa. Ibo is a Nigerian language. Amharic is the language of the Amhara of Ethiopia.
     }
 
     private Subject createSubject(String name, int order) {
