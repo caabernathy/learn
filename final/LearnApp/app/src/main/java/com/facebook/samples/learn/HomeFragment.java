@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.facebook.CallbackManager;
+import com.facebook.share.model.AppInviteContent;
+import com.facebook.share.widget.AppInviteDialog;
 import com.facebook.share.widget.LikeView;
 
 /**
@@ -63,6 +65,13 @@ public class HomeFragment extends Fragment {
                         showQuizList("History");
                     }
                 });
+        (getActivity().findViewById(R.id.button_invite)).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        showAppInvite();
+                    }
+                });
     }
 
     @Override
@@ -75,5 +84,15 @@ public class HomeFragment extends Fragment {
         Intent intent = new Intent(getActivity(), QuizListActivity.class);
         intent.putExtra(ARG_SUBJECT, subjectName);
         startActivity(intent);
+    }
+
+    private void showAppInvite() {
+        String appLinkUrl = "https://fb.me/1676016826001654";
+        if (AppInviteDialog.canShow()) {
+            AppInviteContent content = new AppInviteContent.Builder()
+                    .setApplinkUrl(appLinkUrl)
+                    .build();
+            AppInviteDialog.show(getActivity(), content);
+        }
     }
 }
