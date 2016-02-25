@@ -24,4 +24,6 @@
     <string name="high_score_message">High Score: %1$d</string>
     <string name="preference_file_key">com.facebook.samples.learn.PREFERENCE_FILE_KEY</string>
 
+    <string name="facebook_app_id">1675950612674942</string>
+
 </resources>
