@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.facebook.appevents.AppEventsConstants;
+import com.facebook.appevents.AppEventsLogger;
 import com.facebook.share.model.ShareLinkContent;
 import com.facebook.share.widget.MessageDialog;
 import com.facebook.share.widget.ShareDialog;
@@ -61,6 +63,8 @@ public class ScoreFragment extends Fragment {
 
         shareDialog = new ShareDialog(this);
         messageDialog = new MessageDialog(this);
+
+        logQuizCompletion();
     }
 
     @Override
@@ -121,5 +125,18 @@ public class ScoreFragment extends Fragment {
 
             messageDialog.show(linkContent);
         }
+    }
+
+    private void logQuizCompletion() {
+        Bundle parameters = new Bundle();
+        parameters.putString(
+                AppEventsConstants.EVENT_PARAM_SUCCESS,
+                AppEventsConstants.EVENT_PARAM_VALUE_YES);
+        parameters.putString(AppEventsConstants.EVENT_PARAM_CONTENT_ID, mTopic);
+
+        AppEventsLogger logger = AppEventsLogger.newLogger(getActivity());
+        logger.logEvent(AppEventsConstants.EVENT_NAME_COMPLETED_TUTORIAL,
+                mScore,
+                parameters);
     }
 }
