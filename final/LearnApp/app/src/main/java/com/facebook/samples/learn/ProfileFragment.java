@@ -7,12 +7,17 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
+import com.facebook.Profile;
+import com.facebook.ProfileTracker;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+import com.facebook.login.widget.ProfilePictureView;
 
 /**
  * Fragment for handing Profile view
@@ -21,6 +26,9 @@ public class ProfileFragment extends Fragment {
 
     private LoginButton loginButton;
     private CallbackManager callbackManager;
+    private TextView profileTextView;
+    private ProfileTracker profileTracker;
+    private ProfilePictureView profilePictureView;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -36,6 +44,12 @@ public class ProfileFragment extends Fragment {
         super.onCreate(savedInstanceState);
         callbackManager = CallbackManager.Factory.create();
 
+        profileTracker = new ProfileTracker() {
+            @Override
+            protected void onCurrentProfileChanged(Profile oldProfile, Profile currentProfile) {
+                updateUI();
+            }
+        };
     }
 
     @Override
@@ -50,21 +64,27 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onSuccess(LoginResult loginResult) {
                 // Successful login
+                updateUI();
                 Log.d("ProfileFragment", "Login success");
             }
 
             @Override
             public void onCancel() {
                 // Login canceled
+                updateUI();
                 Log.d("ProfileFragment", "Login canceled");
             }
 
             @Override
             public void onError(FacebookException exception) {
                 // Error during login
+                updateUI();
                 Log.d("ProfileFragment", "Login error");
             }
         });
+
+        profileTextView = (TextView) view.findViewById(R.id.profile_text);
+        profilePictureView = (ProfilePictureView) view.findViewById(R.id.profile_picture);
 
         return view;
     }
@@ -73,6 +93,34 @@ public class ProfileFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         callbackManager.onActivityResult(requestCode, resultCode, data);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        updateUI();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        profileTracker.stopTracking();
+    }
+
+    private void updateUI() {
+        boolean enableButtons = AccessToken.getCurrentAccessToken() != null;
+        Profile profile = Profile.getCurrentProfile();
+        if (enableButtons && profile != null) {
+            String loggedInGreeting = String.format(
+                    getActivity().getResources().getString(
+                            R.string.greeting_profile_logged_in), profile.getFirstName());
+            profileTextView.setText(loggedInGreeting);
+            profilePictureView.setProfileId(profile.getId());
+        } else {
+            profileTextView.setText(
+                    getActivity().getResources().getString(R.string.greeting_profile));
+            profilePictureView.setProfileId(null);
+        }
     }
 
 }

@@ -26,4 +26,6 @@
 
     <string name="facebook_app_id">1675950612674942</string>
 
+    <string name="greeting_profile_logged_in">Welcome, %1$s</string>
+
 </resources>
