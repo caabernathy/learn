@@ -28,4 +28,11 @@
         android:layout_height="wrap_content"
         android:text="@string/share_timeline"/>
 
+    <Button
+        android:id="@+id/button_share_messenger"
+        android:layout_margin="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/share_messenger"/>
+
 </LinearLayout>

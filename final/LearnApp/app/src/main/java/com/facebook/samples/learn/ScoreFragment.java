@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.facebook.share.model.ShareLinkContent;
+import com.facebook.share.widget.MessageDialog;
 import com.facebook.share.widget.ShareDialog;
 
 /**
@@ -23,6 +24,7 @@ public class ScoreFragment extends Fragment {
     private int mHighScore;
 
     private ShareDialog shareDialog;
+    private MessageDialog messageDialog;
 
     public ScoreFragment() {
         // Required empty public constructor
@@ -58,6 +60,7 @@ public class ScoreFragment extends Fragment {
         }
 
         shareDialog = new ShareDialog(this);
+        messageDialog = new MessageDialog(this);
     }
 
     @Override
@@ -85,6 +88,13 @@ public class ScoreFragment extends Fragment {
                         showShareTimeline();
                     }
                 });
+        ((Button) getActivity().findViewById(R.id.button_share_messenger)).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        showShareMessenger();
+                    }
+                });
     }
 
     private void showShareTimeline() {
@@ -97,6 +107,19 @@ public class ScoreFragment extends Fragment {
                     .build();
 
             shareDialog.show(linkContent);
+        }
+    }
+
+    private void showShareMessenger() {
+        if (MessageDialog.canShow(ShareLinkContent.class)) {
+            ShareLinkContent linkContent = new ShareLinkContent.Builder()
+                    .setContentTitle("Score Results")
+                    .setContentDescription(
+                            "Facebook integration demo")
+                    .setContentUrl(Uri.parse("http://developers.facebook.com/android"))
+                    .build();
+
+            messageDialog.show(linkContent);
         }
     }
 }

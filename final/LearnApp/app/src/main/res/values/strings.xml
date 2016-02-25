@@ -28,5 +28,6 @@
 
     <string name="greeting_profile_logged_in">Welcome, %1$s</string>
     <string name="share_timeline">Share on your timeline</string>
+    <string name="share_messenger">Share via messenger</string>
 
 </resources>
