@@ -1,0 +1,38 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.facebook.samples.learn.ScoreFragment"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/score_summary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/score_message" />
+
+    <TextView
+        android:id="@+id/high_score_summary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/high_score_message" />
+
+    <Button
+        android:id="@+id/button_share_timeline"
+        android:layout_margin="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/share_timeline"/>
+
+    <Button
+        android:id="@+id/button_share_messenger"
+        android:layout_margin="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/share_messenger"/>
+
+</LinearLayout>

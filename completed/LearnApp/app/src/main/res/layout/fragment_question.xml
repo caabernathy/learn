@@ -1,0 +1,66 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.facebook.samples.learn.QuestionFragment">
+
+    <TextView
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="@string/question_label" />
+
+    <TextView
+        android:id="@+id/question_text"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="0dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/question_placeholder" />
+
+    <TextView
+        android:layout_margin="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="@string/select_label" />
+
+    <RadioGroup
+        android:id="@+id/radio_group_question"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RadioButton
+            android:id="@+id/option_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/option_1_label" />
+        <RadioButton
+            android:id="@+id/option_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/option_2_label" />
+        <RadioButton
+            android:id="@+id/option_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/option_3_label" />
+        <RadioButton
+            android:id="@+id/option_4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/option_4_label" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/button_save"
+        android:layout_margin="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/next_button"/>
+
+</LinearLayout>

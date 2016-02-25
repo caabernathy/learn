@@ -1,0 +1,52 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.facebook.samples.learn.HomeFragment">
+
+    <TextView
+        android:id="@+id/home_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/greeting_home" />
+
+    <ImageButton
+        android:id="@+id/button_math"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:scaleType="centerInside"
+        android:layout_gravity="center_horizontal"
+        android:background="@android:color/transparent"
+        android:src="@drawable/button_math" />
+
+    <ImageButton
+        android:id="@+id/button_history"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="160dp"
+        android:scaleType="centerInside"
+        android:layout_gravity="center_horizontal"
+        android:background="@android:color/transparent"
+        android:src="@drawable/button_history" />
+
+    <com.facebook.share.widget.LikeView
+        android:id="@+id/like_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="280dp"
+        android:layout_gravity="center_horizontal" />
+
+    <ImageButton
+        android:id="@+id/button_invite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="centerInside"
+        android:background="@android:color/transparent"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="340dp"
+        android:src="@drawable/button_invite" />
+
+</FrameLayout>
