@@ -1,11 +1,16 @@
 package com.facebook.samples.learn;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+
+import com.facebook.share.model.ShareLinkContent;
+import com.facebook.share.widget.ShareDialog;
 
 /**
  * Fragment used to display the score summary
@@ -16,6 +21,8 @@ public class ScoreFragment extends Fragment {
     private String mTopic;
     private int mScore;
     private int mHighScore;
+
+    private ShareDialog shareDialog;
 
     public ScoreFragment() {
         // Required empty public constructor
@@ -49,6 +56,8 @@ public class ScoreFragment extends Fragment {
             ModelUtils utils = ModelUtils.getInstance();
             mHighScore = utils.getHighScore(getActivity(), mTopic);
         }
+
+        shareDialog = new ShareDialog(this);
     }
 
     @Override
@@ -64,5 +73,30 @@ public class ScoreFragment extends Fragment {
         ((TextView) v.findViewById(R.id.score_summary)).setText(messageScore);
         ((TextView) v.findViewById(R.id.high_score_summary)).setText(messageHighScore);
         return v;
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        ((Button) getActivity().findViewById(R.id.button_share_timeline)).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        showShareTimeline();
+                    }
+                });
+    }
+
+    private void showShareTimeline() {
+        if (ShareDialog.canShow(ShareLinkContent.class)) {
+            ShareLinkContent linkContent = new ShareLinkContent.Builder()
+                    .setContentTitle("Score Results")
+                    .setContentDescription(
+                            "Facebook integration demo")
+                    .setContentUrl(Uri.parse("http://developers.facebook.com/android"))
+                    .build();
+
+            shareDialog.show(linkContent);
+        }
     }
 }

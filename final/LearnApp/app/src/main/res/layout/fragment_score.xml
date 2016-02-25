@@ -21,4 +21,11 @@
         android:layout_marginTop="20dp"
         android:text="@string/high_score_message" />
 
+    <Button
+        android:id="@+id/button_share_timeline"
+        android:layout_margin="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/share_timeline"/>
+
 </LinearLayout>
