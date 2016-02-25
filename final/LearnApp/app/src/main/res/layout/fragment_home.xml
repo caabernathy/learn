@@ -32,4 +32,11 @@
         android:background="@android:color/transparent"
         android:src="@drawable/button_history" />
 
+    <com.facebook.share.widget.LikeView
+        android:id="@+id/like_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="280dp"
+        android:layout_gravity="center_horizontal" />
+
 </FrameLayout>

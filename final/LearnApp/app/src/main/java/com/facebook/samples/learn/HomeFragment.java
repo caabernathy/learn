@@ -7,11 +7,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.facebook.CallbackManager;
+import com.facebook.share.widget.LikeView;
+
 /**
  * Home view fragment
  */
 public class HomeFragment extends Fragment {
     private static final String ARG_SUBJECT = "subject";
+    private CallbackManager callbackManager;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -25,6 +29,7 @@ public class HomeFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        callbackManager = CallbackManager.Factory.create();
 
     }
 
@@ -33,6 +38,11 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+        LikeView likeView = (LikeView) view.findViewById(R.id.like_view);
+        likeView.setFragment(this);
+        likeView.setObjectIdAndType(
+                "https://www.facebook.com/mylearnapp/",
+                LikeView.ObjectType.PAGE);
         return view;
     }
 
@@ -53,6 +63,12 @@ public class HomeFragment extends Fragment {
                         showQuizList("History");
                     }
                 });
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        callbackManager.onActivityResult(requestCode, resultCode, data);
     }
 
     private void showQuizList(String subjectName) {
